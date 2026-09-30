@@ -1,0 +1,2 @@
+package com.library.servlet; import com.library.dao.BookDAO; import jakarta.servlet.annotation.WebServlet; import jakarta.servlet.http.*; import java.io.*;
+@WebServlet("/books") public class BookServlet extends HttpServlet { protected void doGet(HttpServletRequest q,HttpServletResponse s)throws IOException{try{q.setAttribute("books",new BookDAO().search(q.getParameter("q")));q.getRequestDispatcher("books.jsp").forward(q,s);}catch(Exception e){throw new IOException(e);}} }
